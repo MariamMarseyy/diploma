@@ -33,20 +33,10 @@ export class UserManagementService {
    */
   async create(currentUser, createUserDto: CreateUserDto) {
     try {
-      const {
-        roleId,
-        name,
-        surname,
-        email,
-        password,
-      } = createUserDto;
+      const { name, surname } = createUserDto;
 
-      const user = await this._user.create({
-        email,
-        password
-      });
       await this._userDetails.create({
-        userId: user.id,
+        userId: currentUser.id,
         name,
         surname,
       });
@@ -58,7 +48,6 @@ export class UserManagementService {
       throw e;
     }
   }
-
 
   /**
    * update user
@@ -72,22 +61,13 @@ export class UserManagementService {
         include: [
           {
             model: UserDetails,
-            attributes: [
-              'userId',
-              'name',
-              'surname',
-            ],
+            attributes: ['userId', 'name', 'surname'],
           },
         ],
         where: { id },
         rejectOnEmpty: new NotFoundException('user not found'),
       });
-      const {
-        name,
-        surname,
-        email,
-        password,
-      } = editUserDto;
+      const { name, surname, email, password } = editUserDto;
       user = await user.update({
         email,
         password,
@@ -106,25 +86,13 @@ export class UserManagementService {
   async findAllExportedUserData() {
     return await this._user.findAll({
       attributes: {
-        exclude: [
-          'id',
-          'password',
-          'createdAt',
-          'updatedAt',
-          'deletedAt',
-        ],
+        exclude: ['id', 'password', 'createdAt', 'updatedAt', 'deletedAt'],
       },
       include: [
         {
           model: UserDetails,
           attributes: {
-            exclude: [
-              'id',
-              'userId',
-              'createdAt',
-              'updatedAt',
-              'deletedAt',
-            ],
+            exclude: ['id', 'userId', 'createdAt', 'updatedAt', 'deletedAt'],
           },
         },
       ],

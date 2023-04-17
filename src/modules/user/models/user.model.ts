@@ -18,6 +18,7 @@ import {
 import { tableOptions } from '@common/database/config/table-options';
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
 import { UserDetails } from '@modules/user/models/user-details.model';
+import { InferAttributes, InferCreationAttributes } from 'sequelize';
 /**
  *
  */
@@ -52,7 +53,6 @@ export class User extends Model<DeepPartial<User>> {
 
   @Column({ type: DataType.STRING, allowNull: true })
   password: string;
-
 
   /**
    * Relations
@@ -91,5 +91,4 @@ export class User extends Model<DeepPartial<User>> {
   verifyPassword(password: string): boolean {
     return compareSync(password, this.password);
   }
-
 }

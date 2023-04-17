@@ -15,7 +15,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [ databaseConfig],
+      load: [databaseConfig],
       cache: true,
       validate,
     }), // load .env

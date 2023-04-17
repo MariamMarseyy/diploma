@@ -1,4 +1,9 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from "@nestjs/common";
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import {
   AuthRequestDto,
   EmailDto,
@@ -7,10 +12,10 @@ import {
 } from './dto/auth.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from '../user/models/user.model';
-import { IAuthResponse } from "@interfaces/auth/IAuthResponse";
-import { IAuthMessage } from "@interfaces/auth/IAuthMessage";
-import { UserService } from "@modules/user/user.service";
-import { IJwtPayload } from "@interfaces/auth/IJwtPayload";
+import { IAuthResponse } from '@interfaces/auth/IAuthResponse';
+import { IAuthMessage } from '@interfaces/auth/IAuthMessage';
+import { UserService } from '@modules/user/user.service';
+import { IJwtPayload } from '@interfaces/auth/IJwtPayload';
 import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class AuthService {
@@ -19,23 +24,19 @@ export class AuthService {
     private readonly _user: typeof User,
     private readonly _usersService: UserService,
     private readonly _jwtService: JwtService,
-
   ) {}
-
 
   /**
    * @description User Sign Up
    * @param signUpDto
    */
-  public async signUp(
-    signUpDto: SignUpDto,
-  ) {
+  public async signUp(signUpDto: SignUpDto) {
     const { email, password } = signUpDto;
-      const user = await this._user.create({
-        email,
-        password: password || null,
-      });
-       return true;
+    const user = await this._user.create({
+      email,
+      password: password || null,
+    });
+    return true;
   }
   /**
    * @description Main Auth Service & Return access_token

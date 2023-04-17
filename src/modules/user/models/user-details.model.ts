@@ -35,7 +35,6 @@ export class UserDetails extends Model<DeepPartial<UserDetails>> {
   // @Column({ type: DataType.STRING, allowNull: true })
   // referralId: string;
 
-
   /**
    * Relations
    */

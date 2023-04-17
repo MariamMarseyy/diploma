@@ -16,7 +16,7 @@ import { User } from './models/user.model';
 import { PaginateDto } from '@common/pagination/paginate.dto';
 import { ChangePasswordDto } from '@modules/user/user-managment/dto/change-password.dto';
 import { CreateUserDto } from '@modules/user/user-managment/dto/create-user.dto';
-import { UpdateUserOwnDto } from '@modules/user/user-managment/dto/update-user-own.dto';
+// import { UpdateUserOwnDto } from '@modules/user/user-managment/dto/update-user-own.dto';
 import { UpdateUserDto } from '@modules/user/user-managment/dto/update-user.dto';
 import { MessageCodeError } from '@common/errors/message-code-error';
 
@@ -31,7 +31,6 @@ export class UserController {
     private readonly _userService: UserService,
     private readonly _userManagementService: UserManagementService,
   ) {}
-
 
   /**
    * create new user
@@ -100,16 +99,15 @@ export class UserController {
    * @param user
    * @param updateUserDto
    */
-  @Put('current')
-  @ApiOperation({ summary: 'Update current user' })
-  async updateCurrent(
-    @CurrentUser() user: User,
-    @Body() updateUserDto: UpdateUserOwnDto,
-  ) {
-    const id = user.id;
-    return this._userManagementService.update(id, updateUserDto);
-  }
-
+  // @Put('current')
+  // @ApiOperation({ summary: 'Update current user' })
+  // async updateCurrent(
+  //   @CurrentUser() user: User,
+  //   @Body() updateUserDto: UpdateUserOwnDto,
+  // ) {
+  //   const id = user.id;
+  //   return this._userManagementService.update(id, updateUserDto);
+  // }
 
   /**
    * update user by index

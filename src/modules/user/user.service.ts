@@ -80,7 +80,7 @@ export class UserService {
    */
   public async getUserById($id: string, password = false): Promise<User> {
     return await User.findByPk<User>($id, {
-      attributes: ['id', 'email', 'phone'],
+      attributes: ['id', 'email'],
       include: [
         {
           model: UserDetails,
@@ -127,5 +127,4 @@ export class UserService {
       },
     );
   }
-
 }

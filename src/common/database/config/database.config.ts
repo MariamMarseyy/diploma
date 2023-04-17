@@ -2,6 +2,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import mariadb from 'mariadb';
 import { registerAs } from '@nestjs/config';
+import { User } from '@modules/user/models/user.model';
+import { UserDetails } from '@modules/user/models/user-details.model';
 
 export const basicSettings = {
   dialect: 'mysql',
@@ -27,4 +29,5 @@ export default registerAs('database', () => ({
   database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
+  models: [User, UserDetails],
 }));
