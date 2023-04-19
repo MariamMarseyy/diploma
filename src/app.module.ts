@@ -11,8 +11,8 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { UserModule } from '@modules/user/user.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { PortfolioModule } from '@modules/portfolio/portfolio.module';
-// import { AutomapperModule } from '@automapper/nestjs';
-// import { classes } from '@automapper/classes';
+import { AutomapperModule } from '@automapper/nestjs';
+import { classes } from '@automapper/classes';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,7 +21,7 @@ import { PortfolioModule } from '@modules/portfolio/portfolio.module';
       cache: true,
       validate,
     }),
-    // AutomapperModule.forRoot({ strategyInitializer: classes() }),
+    AutomapperModule.forRoot({ strategyInitializer: classes() }),
     // load .env
     // CacheModule.registerAsync({
     //   isGlobal: true,
