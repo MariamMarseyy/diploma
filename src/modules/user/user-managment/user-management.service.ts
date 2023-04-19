@@ -1,6 +1,5 @@
 import {
   BadRequestException,
-  ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -48,7 +47,6 @@ export class UserManagementService {
       throw e;
     }
   }
-
   /**
    * update user
    * @param id

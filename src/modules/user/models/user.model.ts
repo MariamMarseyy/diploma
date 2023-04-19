@@ -18,7 +18,7 @@ import {
 import { tableOptions } from '@common/database/config/table-options';
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
 import { UserDetails } from '@modules/user/models/user-details.model';
-import { InferAttributes, InferCreationAttributes } from 'sequelize';
+import { Portfolio } from '@modules/portfolio/models/portfolio.model';
 /**
  *
  */
@@ -60,7 +60,10 @@ export class User extends Model<DeepPartial<User>> {
   @HasOne(() => UserDetails)
   userDetails: UserDetails;
 
-  token?: string;
+  @HasMany(() => Portfolio)
+  portfolios: Portfolio[];
+
+  // token?: string;
 
   /**
    * @description Hooks

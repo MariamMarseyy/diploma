@@ -7,9 +7,7 @@ import { UserController } from '@modules/user/user.controller';
 import { UserDetails } from '@modules/user/models/user-details.model';
 
 @Module({
-  imports: [
-    SequelizeModule.forFeature([User, UserDetails]),
-  ],
+  imports: [SequelizeModule.forFeature([User, UserDetails])],
   controllers: [UserController],
   providers: [UserService, UserManagementService],
   exports: [UserService],

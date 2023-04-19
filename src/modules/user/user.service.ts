@@ -9,6 +9,7 @@ import { Sequelize } from 'sequelize-typescript';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './models/user.model';
 import { UserDetails } from '@modules/user/models/user-details.model';
+import { Portfolio } from '@modules/portfolio/models/portfolio.model';
 
 @Injectable()
 export class UserService {
@@ -107,6 +108,39 @@ export class UserService {
       return null;
     }
   }
+  // public async addPortfolio(user: User) {
+  //   const portfolios = user.portfolios ?? [];
+  //   const portfolio = new Portfolio();
+  //   portfolio.api_key = 'zxjx';
+  //   portfolio.exchange = 'coinbasee';
+  //   portfolio.api_secret = 'bzjjzsl';
+  //   portfolio.user_id = user.id;
+  //   portfolios.push(portfolio);
+  //   // return await Portfolio.create({
+  //   //   api_key: 'zxx',
+  //   //   exchange: 'coinbase',
+  //   //   api_secret: 'bzbzsl',
+  //   //   user_id: user.id,
+  //   // });
+  //   //   {
+  //   //     portfolios: portfolios,
+  //   //   },
+  //   //   {
+  //   //     where: { id: user.id },
+  //   //   },
+  //   // );
+  //
+  //   return await user.update(
+  //     {
+  //       portfolios: user.portfolios,
+  //     },
+  //     {
+  //       where: {
+  //         id: user.id,
+  //       },
+  //     },
+  //   );
+  // }
 
   /**
    *

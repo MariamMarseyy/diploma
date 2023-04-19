@@ -38,13 +38,20 @@ export class UserController {
    * @param createUserDto
    */
   @Post()
-  @ApiOperation({ summary: 'Create new user' })
+  @ApiOperation({ summary: 'add more information' })
   async create(
     @CurrentUser() currentUser: User,
     @Body() createUserDto: CreateUserDto,
   ) {
     return this._userManagementService.create(currentUser, createUserDto);
   }
+
+  // @Post('portfolio')
+  // @ApiOperation({ summary: 'add zibil' })
+  // async createPortfolio(@CurrentUser() currentUser: User) {
+  //   await this._userService.addPortfolio(currentUser);
+  //   return true;
+  // }
 
   /**
    * Get user Information

@@ -1,15 +1,9 @@
 import {
   BadRequestException,
-  ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import {
-  AuthRequestDto,
-  EmailDto,
-  ResetPasswordDto,
-  SignUpDto,
-} from './dto/auth.dto';
+import { AuthRequestDto, SignUpDto } from './dto/auth.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from '../user/models/user.model';
 import { IAuthResponse } from '@interfaces/auth/IAuthResponse';

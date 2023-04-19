@@ -4,11 +4,12 @@ import mariadb from 'mariadb';
 import { registerAs } from '@nestjs/config';
 import { User } from '@modules/user/models/user.model';
 import { UserDetails } from '@modules/user/models/user-details.model';
+import { Portfolio } from '@modules/portfolio/models/portfolio.model';
 
 export const basicSettings = {
   dialect: 'mysql',
   dialectModule: mariadb,
-  logging: false,
+  logging: console.log,
   force: false,
   timezone: '+00:00',
   dateStrings: true,
@@ -19,8 +20,8 @@ export const basicSettings = {
     idl: 10000,
     acquire: 60000,
   },
-  // autoLoadModels: true,
-  synchronize: false,
+  autoLoadModels: true,
+  synchronize: true,
 };
 export default registerAs('database', () => ({
   ...basicSettings,
@@ -29,5 +30,5 @@ export default registerAs('database', () => ({
   database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
-  models: [User, UserDetails],
+  models: [User, UserDetails, Portfolio],
 }));
